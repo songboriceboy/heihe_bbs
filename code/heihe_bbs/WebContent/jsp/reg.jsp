@@ -49,7 +49,7 @@
   <div class="fly-panel fly-panel-user" pad20>
     <div class="layui-tab layui-tab-brief">
       <ul class="layui-tab-title">
-        <li><a href="login.html">登入</a></li>
+        <li><a href="${pageContext.request.contextPath}/jsp/login.jsp">登入</a></li>
         <li class="layui-this">注册</li>
       </ul>
       <div class="layui-form layui-tab-content" id="LAY_ucm" style="padding: 20px 0;">
@@ -92,7 +92,7 @@
                 </div>
               </div> -->
               <div class="layui-form-item">
-                <input type="submit" class="layui-btn" lay-filter="*" lay-submit>立即注册</button>
+                <button class="layui-btn" lay-filter="*" lay-submit>立即注册</button>
               </div>
               <div class="layui-form-item fly-form-app">
                 <span>或者直接使用社交账号快捷注册</span>

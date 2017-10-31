@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.neuedu.bean.BbsUserinfo;
 import com.neuedu.service.IUserService;
 import com.neuedu.service.UserServiceImpl;
+import com.neuedu.util.Md5Utils;
 
 /**
  * Servlet implementation class RegServlet
@@ -51,7 +52,7 @@ public class RegServlet extends HttpServlet {
 		BbsUserinfo bu = new BbsUserinfo();
 		bu.setEmail(strEmail);
 		bu.setNickname(strNickName);
-		bu.setPassword(strPwd);
+		bu.setPassword(Md5Utils.md5(strPwd));
 		
 		ius.addUser(bu);
 		

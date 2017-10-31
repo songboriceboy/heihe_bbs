@@ -2,6 +2,7 @@
     <wb-module deploy-name="heihe_bbs">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/ress"/>
         <property name="context-root" value="heihe_bbs"/>
         <property name="java-output-path" value="/heihe_bbs/build/classes"/>
     </wb-module>

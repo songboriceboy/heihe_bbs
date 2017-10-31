@@ -14,4 +14,11 @@ public class UserServiceImpl implements IUserService{
 		return iud.addUser(bu);
 	}
 
+	@Override
+	public int userLogin(String email, String pass) {
+		// TODO Auto-generated method stub
+		IUserDao iud = new UserDaoImpl();
+		return iud.userLogin(email, pass);
+	}
+
 }

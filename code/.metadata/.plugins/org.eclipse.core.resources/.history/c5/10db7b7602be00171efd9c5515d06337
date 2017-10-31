@@ -1,0 +1,73 @@
+package com.usermanager.util;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.Properties;
+
+/**
+ * 该类用于连接数据库
+ * @author ttc
+ *
+ */
+public class DBUtil {
+	//保证该类对象的唯一性
+		private static DBUtil db;
+		
+		private String className;
+		private String url;
+		private String username;
+		private String password;
+		//不让用户随意使用new关键字创建对象
+		private DBUtil(){
+			Properties prop =new Properties();
+			try {
+				//读取配置文件数据 / 加载配置文件
+				prop.load( new FileInputStream("ress/db.properties"));
+				 className=prop.getProperty("className");
+				 url=prop.getProperty("url");
+				 username=prop.getProperty("username");
+				 password=prop.getProperty("password");
+//				System.out.println(className+","+url);
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		//给用户一个该类的对象
+		public static DBUtil getInstance(){
+			//懒加载
+			if(db==null){
+				db=new DBUtil();
+			}
+			return db;
+		}
+		//加载驱动，建立连接
+		public Connection getConnection(){
+			try {
+				 Class.forName(className);
+				 Connection	conn = DriverManager.getConnection(
+						 
+							url,
+							username,
+							password
+							);
+//				System.out.println(conn);
+				return conn;
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return null;
+			
+		}
+}
+
