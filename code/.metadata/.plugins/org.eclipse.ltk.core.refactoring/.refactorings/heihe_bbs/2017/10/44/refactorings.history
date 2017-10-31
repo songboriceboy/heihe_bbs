@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;com.neuedu.domain&apos; to &apos;com.neuedu.bean&apos;&#x0D;&#x0A;- Original project: &apos;heihe_bbs&apos;&#x0D;&#x0A;- Original element: &apos;heihe_bbs/src/com.neuedu.domain&apos;&#x0D;&#x0A;- Renamed element: &apos;heihe_bbs/src/com.neuedu.bean&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;com.neuedu.domain&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;com.neuedu.domain" name="com.neuedu.bean" qualified="false" references="true" stamp="1509416885703" textual="false" version="1.0"/>
+</session>

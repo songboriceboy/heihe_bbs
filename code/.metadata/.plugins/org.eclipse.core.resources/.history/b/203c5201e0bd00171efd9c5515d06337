@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="heihe_bbs">
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <property name="context-root" value="heihe_bbs"/>
+        <property name="java-output-path" value="/heihe_bbs/build/classes"/>
+    </wb-module>
+</project-modules>
