@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="com.neuedu.bean.BbsUserinfo"/>
 <fullyQualifiedTypeName name="com.neuedu.dao.IUserDao"/>
 <fullyQualifiedTypeName name="com.neuedu.dao.UserDaoImpl"/>
-<fullyQualifiedTypeName name="com.neuedu.util.DButil"/>
 <fullyQualifiedTypeName name="com.mysql.jdbc.Connection"/>
 <fullyQualifiedTypeName name="java.sql.Connection"/>
 <fullyQualifiedTypeName name="com.mysql.jdbc.PreparedStatement"/>
@@ -12,4 +10,14 @@
 <fullyQualifiedTypeName name="com.neuedu.service.IUserService"/>
 <fullyQualifiedTypeName name="com.neuedu.service.UserServiceImpl"/>
 <fullyQualifiedTypeName name="com.neuedu.util.Md5Utils"/>
+<fullyQualifiedTypeName name="com.neuedu.util.DButil"/>
+<fullyQualifiedTypeName name="com.neuedu.service.ITopicService"/>
+<fullyQualifiedTypeName name="com.neuedu.dao.ITopicDao"/>
+<fullyQualifiedTypeName name="com.neuedu.dao.TopicDaoImpl"/>
+<fullyQualifiedTypeName name="com.neuedu.service.TopicServiceImpl"/>
+<fullyQualifiedTypeName name="com.neuedu.bean.BbsTopicinfo"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
+<fullyQualifiedTypeName name="com.neuedu.bean.BbsUserinfo"/>
+<fullyQualifiedTypeName name="org.junit.Test"/>
 </qualifiedTypeNameHistroy>

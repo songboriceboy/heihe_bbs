@@ -118,261 +118,30 @@
       </ul>
       
       <ul class="fly-list">
-        <li class="fly-list-li">
+      
+      <c:forEach items="${topics}" var = "topic">
+      
+      <li class="fly-list-li">
           <a href="user/home.html" class="fly-list-avatar">
             <img src="../res/images/avatar/default.png" alt="">
           </a>
           <h2 class="fly-tip">
-            <a href="jie/detail.html">关于layui 引用其他插件，扩展模块 的用法</a>
+            <a href="jie/detail.html">${topic.title}</a>
           </h2>
           <p>
-            <span><a href="user/home.html">用户昵称</a></span>
-            <span>1小时前</span>
+            <span><a href="user/home.html">${topic.nickname}</a></span>
+            <span>${topic.createtime}</span>
             <span>layui框架综合</span>
             <span class="fly-list-hint"> 
               <i class="iconfont" title="回答">&#xe60c;</i> 8
-              <i class="iconfont" title="人气">&#xe60b;</i> 106
+              <i class="iconfont" title="人气">&#xe60b;</i> ${topic.viewCount}
             </span>
           </p>
         </li>
-        <li class="fly-list-li">
-          <a href="user/home.html" class="fly-list-avatar">
-            <img src="../res/images/avatar/default.png" alt="">
-          </a>
-          <h2 class="fly-tip">
-            <a href="jie/detail.html">关于layui 引用其他插件，扩展模块 的用法</a>
-          </h2>
-          <p>
-            <span><a href="user/home.html">用户昵称</a></span>
-            <span>1小时前</span>
-            <span>layui框架综合</span>
-            <span class="fly-list-hint"> 
-              <i class="iconfont" title="回答">&#xe60c;</i> 8
-              <i class="iconfont" title="人气">&#xe60b;</i> 106
-            </span>
-          </p>
-        </li>
-        <li class="fly-list-li">
-          <a href="user/home.html" class="fly-list-avatar">
-            <img src="../res/images/avatar/default.png" alt="">
-          </a>
-          <h2 class="fly-tip">
-            <a href="jie/detail.html">关于layui 引用其他插件，扩展模块 的用法</a>
-          </h2>
-          <p>
-            <span><a href="user/home.html">用户昵称</a></span>
-            <span>1小时前</span>
-            <span>layui框架综合</span>
-            <span class="fly-list-hint"> 
-              <i class="iconfont" title="回答">&#xe60c;</i> 8
-              <i class="iconfont" title="人气">&#xe60b;</i> 106
-            </span>
-          </p>
-        </li>
-        <li class="fly-list-li">
-          <a href="user/home.html" class="fly-list-avatar">
-            <img src="../res/images/avatar/default.png" alt="">
-          </a>
-          <h2 class="fly-tip">
-            <a href="jie/detail.html">关于layui 引用其他插件，扩展模块 的用法</a>
-          </h2>
-          <p>
-            <span><a href="user/home.html">用户昵称</a></span>
-            <span>1小时前</span>
-            <span>layui框架综合</span>
-            <span class="fly-list-hint"> 
-              <i class="iconfont" title="回答">&#xe60c;</i> 8
-              <i class="iconfont" title="人气">&#xe60b;</i> 106
-            </span>
-          </p>
-        </li>
-        <li class="fly-list-li">
-          <a href="user/home.html" class="fly-list-avatar">
-            <img src="../res/images/avatar/default.png" alt="">
-          </a>
-          <h2 class="fly-tip">
-            <a href="jie/detail.html">关于layui 引用其他插件，扩展模块 的用法</a>
-          </h2>
-          <p>
-            <span><a href="user/home.html">用户昵称</a></span>
-            <span>1小时前</span>
-            <span>layui框架综合</span>
-            <span class="fly-list-hint"> 
-              <i class="iconfont" title="回答">&#xe60c;</i> 8
-              <i class="iconfont" title="人气">&#xe60b;</i> 106
-            </span>
-          </p>
-        </li>
-        <li class="fly-list-li">
-          <a href="user/home.html" class="fly-list-avatar">
-            <img src="../res/images/avatar/default.png" alt="">
-          </a>
-          <h2 class="fly-tip">
-            <a href="jie/detail.html">关于layui 引用其他插件，扩展模块 的用法</a>
-          </h2>
-          <p>
-            <span><a href="user/home.html">用户昵称</a></span>
-            <span>1小时前</span>
-            <span>layui框架综合</span>
-            <span class="fly-list-hint"> 
-              <i class="iconfont" title="回答">&#xe60c;</i> 8
-              <i class="iconfont" title="人气">&#xe60b;</i> 106
-            </span>
-          </p>
-        </li>
-        <li class="fly-list-li">
-          <a href="user/home.html" class="fly-list-avatar">
-            <img src="../res/images/avatar/default.png" alt="">
-          </a>
-          <h2 class="fly-tip">
-            <a href="jie/detail.html">关于layui 引用其他插件，扩展模块 的用法</a>
-          </h2>
-          <p>
-            <span><a href="user/home.html">用户昵称</a></span>
-            <span>1小时前</span>
-            <span>layui框架综合</span>
-            <span class="fly-list-hint"> 
-              <i class="iconfont" title="回答">&#xe60c;</i> 8
-              <i class="iconfont" title="人气">&#xe60b;</i> 106
-            </span>
-          </p>
-        </li>
-        <li class="fly-list-li">
-          <a href="user/home.html" class="fly-list-avatar">
-            <img src="../res/images/avatar/default.png" alt="">
-          </a>
-          <h2 class="fly-tip">
-            <a href="jie/detail.html">关于layui 引用其他插件，扩展模块 的用法</a>
-          </h2>
-          <p>
-            <span><a href="user/home.html">用户昵称</a></span>
-            <span>1小时前</span>
-            <span>layui框架综合</span>
-            <span class="fly-list-hint"> 
-              <i class="iconfont" title="回答">&#xe60c;</i> 8
-              <i class="iconfont" title="人气">&#xe60b;</i> 106
-            </span>
-          </p>
-        </li>
-        <li class="fly-list-li">
-          <a href="user/home.html" class="fly-list-avatar">
-            <img src="../res/images/avatar/default.png" alt="">
-          </a>
-          <h2 class="fly-tip">
-            <a href="jie/detail.html">关于layui 引用其他插件，扩展模块 的用法</a>
-          </h2>
-          <p>
-            <span><a href="user/home.html">用户昵称</a></span>
-            <span>1小时前</span>
-            <span>layui框架综合</span>
-            <span class="fly-list-hint"> 
-              <i class="iconfont" title="回答">&#xe60c;</i> 8
-              <i class="iconfont" title="人气">&#xe60b;</i> 106
-            </span>
-          </p>
-        </li>
-        <li class="fly-list-li">
-          <a href="user/home.html" class="fly-list-avatar">
-            <img src="../res/images/avatar/default.png" alt="">
-          </a>
-          <h2 class="fly-tip">
-            <a href="jie/detail.html">关于layui 引用其他插件，扩展模块 的用法</a>
-          </h2>
-          <p>
-            <span><a href="user/home.html">用户昵称</a></span>
-            <span>1小时前</span>
-            <span>layui框架综合</span>
-            <span class="fly-list-hint"> 
-              <i class="iconfont" title="回答">&#xe60c;</i> 8
-              <i class="iconfont" title="人气">&#xe60b;</i> 106
-            </span>
-          </p>
-        </li>
-        <li class="fly-list-li">
-          <a href="user/home.html" class="fly-list-avatar">
-            <img src="../res/images/avatar/default.png" alt="">
-          </a>
-          <h2 class="fly-tip">
-            <a href="jie/detail.html">关于layui 引用其他插件，扩展模块 的用法</a>
-          </h2>
-          <p>
-            <span><a href="user/home.html">用户昵称</a></span>
-            <span>1小时前</span>
-            <span>layui框架综合</span>
-            <span class="fly-list-hint"> 
-              <i class="iconfont" title="回答">&#xe60c;</i> 8
-              <i class="iconfont" title="人气">&#xe60b;</i> 106
-            </span>
-          </p>
-        </li>
-        <li class="fly-list-li">
-          <a href="user/home.html" class="fly-list-avatar">
-            <img src="../res/images/avatar/default.png" alt="">
-          </a>
-          <h2 class="fly-tip">
-            <a href="jie/detail.html">关于layui 引用其他插件，扩展模块 的用法</a>
-          </h2>
-          <p>
-            <span><a href="user/home.html">用户昵称</a></span>
-            <span>1小时前</span>
-            <span>layui框架综合</span>
-            <span class="fly-list-hint"> 
-              <i class="iconfont" title="回答">&#xe60c;</i> 8
-              <i class="iconfont" title="人气">&#xe60b;</i> 106
-            </span>
-          </p>
-        </li>
-        <li class="fly-list-li">
-          <a href="user/home.html" class="fly-list-avatar">
-            <img src="../res/images/avatar/default.png" alt="">
-          </a>
-          <h2 class="fly-tip">
-            <a href="jie/detail.html">关于layui 引用其他插件，扩展模块 的用法</a>
-          </h2>
-          <p>
-            <span><a href="user/home.html">用户昵称</a></span>
-            <span>1小时前</span>
-            <span>layui框架综合</span>
-            <span class="fly-list-hint"> 
-              <i class="iconfont" title="回答">&#xe60c;</i> 8
-              <i class="iconfont" title="人气">&#xe60b;</i> 106
-            </span>
-          </p>
-        </li>
-        <li class="fly-list-li">
-          <a href="user/home.html" class="fly-list-avatar">
-            <img src="../res/images/avatar/default.png" alt="">
-          </a>
-          <h2 class="fly-tip">
-            <a href="jie/detail.html">关于layui 引用其他插件，扩展模块 的用法</a>
-          </h2>
-          <p>
-            <span><a href="user/home.html">用户昵称</a></span>
-            <span>1小时前</span>
-            <span>layui框架综合</span>
-            <span class="fly-list-hint"> 
-              <i class="iconfont" title="回答">&#xe60c;</i> 8
-              <i class="iconfont" title="人气">&#xe60b;</i> 106
-            </span>
-          </p>
-        </li>
-        <li class="fly-list-li">
-          <a href="user/home.html" class="fly-list-avatar">
-            <img src="../res/images/avatar/default.png" alt="">
-          </a>
-          <h2 class="fly-tip">
-            <a href="jie/detail.html">关于layui 引用其他插件，扩展模块 的用法</a>
-          </h2>
-          <p>
-            <span><a href="user/home.html">用户昵称</a></span>
-            <span>1小时前</span>
-            <span>layui框架综合</span>
-            <span class="fly-list-hint"> 
-              <i class="iconfont" title="回答">&#xe60c;</i> 8
-              <i class="iconfont" title="人气">&#xe60b;</i> 106
-            </span>
-          </p>
-        </li>
+      
+      </c:forEach>
+        
+       
       </ul>
       
       <div style="text-align: center">

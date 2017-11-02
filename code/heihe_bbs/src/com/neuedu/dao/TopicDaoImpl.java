@@ -1,9 +1,15 @@
 package com.neuedu.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.mysql.jdbc.PreparedStatement;
+import com.neuedu.bean.BbsTopicInfoEx;
 import com.neuedu.bean.BbsTopicinfo;
+import com.neuedu.bean.BbsUserinfo;
 import com.neuedu.util.DButil;
 
 public class TopicDaoImpl implements ITopicDao{
@@ -41,6 +47,48 @@ public class TopicDaoImpl implements ITopicDao{
 		DButil.getInstance().close(con);
 		DButil.getInstance().close(ps);
 		return ret;
+	}
+
+	@Override
+	public List<BbsTopicInfoEx> getAllTopics() {
+		// TODO Auto-generated method stub
+		Connection con =  null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<BbsTopicInfoEx> lst = new ArrayList<>();
+		try {
+			con =  DButil.getInstance().getConnection();
+			String strSql = "select tbt.title,tbt.createtime,tbt.view_count,tbu.nickname from tab_bbs_topicinfo as tbt join tab_bbs_userinfo as tbu on tbt.userid = tbu.id";
+			ps = (PreparedStatement) con.prepareStatement(strSql);
+		
+		
+			
+			rs = ps.executeQuery();
+			while(rs.next())
+			{
+				String nickname = rs.getString("nickname");
+				String title = rs.getString("title");
+				Date date = rs.getDate("createtime");
+				int view_count = rs.getInt("view_count");
+				
+				BbsTopicInfoEx btie = new BbsTopicInfoEx();
+				btie.setTitle(title);
+				btie.setNickname(nickname);
+				btie.setViewCount(view_count);
+				btie.setCreatetime(date);
+				
+				lst.add(btie);
+				
+			}
+		
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		DButil.getInstance().close(con);
+		DButil.getInstance().close(ps);
+		DButil.getInstance().close(rs);
+		return lst;
 	}
 
 }
