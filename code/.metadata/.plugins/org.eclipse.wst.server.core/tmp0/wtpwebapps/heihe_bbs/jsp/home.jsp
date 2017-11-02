@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 
 <!DOCTYPE html>
@@ -45,7 +45,7 @@
        <c:if test="${!empty userinfo}">
       <a class="avatar" href="user/index.html">
         <img src="http://tp4.sinaimg.cn/1345566427/180/5730976522/0">
-        <cite>${userinfo}</cite>
+        <cite>${userinfo.nickname}</cite>
         <i>VIP2</i>
       </a>
       <div class="nav">
@@ -73,7 +73,7 @@
           <i class="iconfont icon-sousuo"></i>
           <input class="layui-input" autocomplete="off" placeholder="搜索内容，回车跳转" type="text" name="q">
         </form>
-        <a href="jie/add.html" class="layui-btn jie-add">发布问题</a>
+        <a href="${pageContext.request.contextPath}/add_topic.do" class="layui-btn jie-add">发布问题</a>
       </div>
       
       

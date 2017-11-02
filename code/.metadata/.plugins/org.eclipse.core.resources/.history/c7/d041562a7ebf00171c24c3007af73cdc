@@ -1,0 +1,13 @@
+package com.neuedu.service;
+
+import com.neuedu.bean.BbsTopicinfo;
+
+public class TopicServiceImpl implements ITopicService {
+
+	@Override
+	public int addTopic(BbsTopicinfo bti) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}
