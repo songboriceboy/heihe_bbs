@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.neuedu.service.IUserService;
 import com.neuedu.service.UserServiceImpl;
@@ -45,10 +46,14 @@ public class LoginServlet extends HttpServlet {
 		
 		//调用service层接口，判断用户名密码是否正确
 		IUserService ius = new UserServiceImpl();
-		int ret = ius.userLogin(strEmail, Md5Utils.md5(strPwd));
-		if(ret>0)
+		String nickname = ius.userLogin(strEmail, Md5Utils.md5(strPwd));
+		if(nickname!=null)
 		{
-			System.out.println("success");
+			//重定向到网站首页（home.jsp)
+			HttpSession httpSession = request.getSession();
+			httpSession.setAttribute("userinfo", nickname);
+			response.sendRedirect(request.getContextPath() + "/jsp/home.jsp");
+			//System.out.println("success");
 		}
 		else
 		{

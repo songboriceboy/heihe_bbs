@@ -35,12 +35,12 @@ public class UserDaoImpl implements IUserDao{
 	}
 
 	@Override
-	public int userLogin(String email, String pass) {
+	public String userLogin(String email, String pass) {
 		// TODO Auto-generated method stub
-		int ret = 0;
+		String ret = "";
 		try {
 			Connection con =  DButil.getInstance().getConnection();
-			String strSql = "select count(*) as count from tab_bbs_userinfo "
+			String strSql = "select nickname from tab_bbs_userinfo "
 					+ "where email = ? and password = ?";
 			PreparedStatement ps = (PreparedStatement) con.prepareStatement(strSql);
 			ps.setString(1, email);
@@ -50,7 +50,7 @@ public class UserDaoImpl implements IUserDao{
 			ResultSet rs = ps.executeQuery();
 			if(rs.next())
 			{
-				ret = rs.getInt("count");
+				ret = rs.getString("nickname");
 			}
 		
 		} catch (Exception e) {

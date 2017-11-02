@@ -15,7 +15,7 @@ public class UserServiceImpl implements IUserService{
 	}
 
 	@Override
-	public int userLogin(String email, String pass) {
+	public String userLogin(String email, String pass) {
 		// TODO Auto-generated method stub
 		IUserDao iud = new UserDaoImpl();
 		return iud.userLogin(email, pass);

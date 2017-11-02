@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="com.neuedu.bean.BbsUserinfo"/>
+<fullyQualifiedTypeName name="com.neuedu.dao.IUserDao"/>
+<fullyQualifiedTypeName name="com.neuedu.dao.UserDaoImpl"/>
+<fullyQualifiedTypeName name="com.neuedu.util.DButil"/>
+<fullyQualifiedTypeName name="com.mysql.jdbc.Connection"/>
+<fullyQualifiedTypeName name="java.sql.Connection"/>
+<fullyQualifiedTypeName name="com.mysql.jdbc.PreparedStatement"/>
+<fullyQualifiedTypeName name="java.sql.ResultSet"/>
+<fullyQualifiedTypeName name="com.sun.corba.se.spi.protocol.InitialServerRequestDispatcher"/>
+<fullyQualifiedTypeName name="com.neuedu.service.IUserService"/>
+<fullyQualifiedTypeName name="com.neuedu.service.UserServiceImpl"/>
+<fullyQualifiedTypeName name="com.neuedu.util.Md5Utils"/>
+</qualifiedTypeNameHistroy>
