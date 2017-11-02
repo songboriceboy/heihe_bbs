@@ -68,7 +68,7 @@ public class CommentDaoImpl implements ICommentDao{
 				BbsCommentEx bc = new BbsCommentEx();
 				bc.setAgreeNum(rs.getInt("agree_num"));
 				bc.setContent(rs.getString("content"));
-				bc.setCommentTime(rs.getDate("comment_time"));
+				bc.setCommentTime(rs.getDate("commentTime"));
 				bc.setNickname(rs.getString("nickname"));
 				lst.add(bc);
 				

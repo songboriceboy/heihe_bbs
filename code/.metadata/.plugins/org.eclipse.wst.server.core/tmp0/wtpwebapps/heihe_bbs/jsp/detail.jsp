@@ -118,7 +118,7 @@
                 </cite>
               </a>
               <div class="detail-hits">
-                <span>${comment.commenttime}</span>
+                <span>${comment.commentTime}</span>
               </div>
               <i class="iconfont icon-caina" title="最佳答案"></i>
             </div>
