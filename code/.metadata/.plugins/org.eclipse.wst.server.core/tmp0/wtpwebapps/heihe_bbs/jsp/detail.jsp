@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
  
  
 <!DOCTYPE html>
@@ -100,13 +101,16 @@
       <div class="fly-panel detail-box" style="padding-top: 0;">
         <a name="comment"></a>
         <ul class="jieda photos" id="jieda">
+        
+        
+        <c:forEach items="${comments}" var = "comment">
           <li data-id="12" class="jieda-daan">
             <a name="item-121212121212"></a>
             <div class="detail-about detail-about-reply">
               <a class="jie-user" href="">
                 <img src="${pageContext.request.contextPath}/res/images/avatar/default.png" alt="">
                 <cite>
-                  <i>纸飞机</i>
+                  <i>${comment.nickname}</i>
                   <!-- <em>(楼主)</em>
                   <em style="color:#5FB878">(管理员)</em>
                   <em style="color:#FF9E3F">（活雷锋）</em>
@@ -114,12 +118,12 @@
                 </cite>
               </a>
               <div class="detail-hits">
-                <span>3分钟前</span>
+                <span>${comment.commenttime}</span>
               </div>
               <i class="iconfont icon-caina" title="最佳答案"></i>
             </div>
             <div class="detail-body jieda-body">
-              <p>么么哒</p>
+              <p>${comment.content}</p>
             </div>
             <div class="jieda-reply">
               <span class="jieda-zan zanok" type="zan"><i class="iconfont icon-zan"></i><em>12</em></span>
@@ -131,48 +135,25 @@
               </div> -->
             </div>
           </li>
+        </c:forEach>
+        
           
-          <li data-id="13">
-            <a name="item-121212121212"></a>
-            <div class="detail-about detail-about-reply">
-              <a class="jie-user" href="">
-                <img src="${pageContext.request.contextPath}/res/images/avatar/default.png" alt="">
-                <cite>
-                  <i>香菇</i>
-                  <em style="color:#FF9E3F">活雷锋</em>
-                </cite>
-              </a>
-              <div class="detail-hits">
-                <span>刚刚</span>
-              </div>
-            </div>
-            <div class="detail-body jieda-body">
-              <p>蓝瘦</p>
-            </div>
-            <div class="jieda-reply">
-              <span class="jieda-zan" type="zan"><i class="iconfont icon-zan"></i><em>0</em></span>
-              <span type="reply"><i class="iconfont icon-svgmoban53"></i>回复</span>
-              <div class="jieda-admin">
-                <span type="edit">编辑</span>
-                <span type="del">删除</span>
-                <span class="jieda-accept" type="accept">采纳</span>
-              </div>
-            </div>
-          </li>
+         
           
           <!-- <li class="fly-none">没有任何回答</li> -->
         </ul>
         
         <div class="layui-form layui-form-pane">
-          <form action="/jie/reply/" method="post">
+          <form action="${pageContext.request.contextPath}/submit_comment.do" method="post">
             <div class="layui-form-item layui-form-text">
               <div class="layui-input-block">
                 <textarea id="L_content" name="content" required lay-verify="required" placeholder="我要回答"  class="layui-textarea fly-editor" style="height: 150px;"></textarea>
               </div>
             </div>
             <div class="layui-form-item">
+              <input type="hidden" name="topic_id" value="${topic.id}">
               <input type="hidden" name="jid" value="{{rows.id}}">
-              <button class="layui-btn" lay-filter="*" lay-submit>提交回答</button>
+              <input type="submit" class="layui-btn" lay-filter="*" value="提交回答">
             </div>
           </form>
         </div>

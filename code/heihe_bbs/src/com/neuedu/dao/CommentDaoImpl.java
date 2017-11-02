@@ -1,0 +1,87 @@
+package com.neuedu.dao;
+
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.mysql.jdbc.PreparedStatement;
+import com.neuedu.bean.BbsComment;
+import com.neuedu.bean.BbsCommentEx;
+import com.neuedu.bean.BbsTopicInfoEx;
+import com.neuedu.util.DButil;
+
+public class CommentDaoImpl implements ICommentDao{
+
+	@Override
+	public int addComment(BbsComment bc) {
+		// TODO Auto-generated method stub
+		int ret = 0;
+		Connection con =  null;
+		PreparedStatement ps = null;
+		try {
+			con =  DButil.getInstance().getConnection();
+			String strSql = "insert into tab_bbs_comment(topic_or_comment_id"
+					+ ",is_topic,content,userid,comment_time) values(?,?,?,?,?)";
+			ps = (PreparedStatement) con.prepareStatement(strSql);
+			ps.setInt(1,bc.getTopicOrCommentId());
+			ps.setInt(2,bc.getIsTopic());//
+			ps.setString(3, bc.getContent());
+			ps.setInt(4, bc.getUserid());
+			ps.setDate(5, new java.sql.Date(bc.getCommentTime().getTime()));
+			
+			ret = ps.executeUpdate();//³É¹¦·µ»Ø1
+		
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		DButil.getInstance().close(con);
+		DButil.getInstance().close(ps);
+		return ret;
+	}
+
+	@Override
+	public List<BbsCommentEx> getAllCommentsByTopicID(int id) {
+		// TODO Auto-generated method stub
+		Connection con =  null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<BbsCommentEx> lst = new ArrayList<>();
+		try {
+			con =  DButil.getInstance().getConnection();
+			String strSql = "select tbc.content,tbc.comment_time,tbc.agree_num,tbu.nickname from tab_bbs_comment as tbc join tab_bbs_userinfo as tbu on tbc.userid = tbu.id where tbc.topic_or_comment_id = ? ";
+			ps = (PreparedStatement) con.prepareStatement(strSql);
+		
+		
+			
+			rs = ps.executeQuery();
+			while(rs.next())
+			{
+//				String nickname = rs.getString("nickname");
+//				String title = rs.getString("title");
+//				Date date = rs.getDate("createtime");
+//				int view_count = rs.getInt("view_count");
+//				int id = rs.getInt("id");
+				
+				BbsCommentEx bc = new BbsCommentEx();
+				bc.setAgreeNum(rs.getInt("agree_num"));
+				bc.setContent(rs.getString("content"));
+				bc.setCommentTime(rs.getDate("commentTime"));
+				bc.setNickname(rs.getString("nickname"));
+				lst.add(bc);
+				
+			}
+		
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		DButil.getInstance().close(con);
+		DButil.getInstance().close(ps);
+		DButil.getInstance().close(rs);
+		return lst;
+	}
+
+}

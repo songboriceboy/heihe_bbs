@@ -1,0 +1,27 @@
+package com.neuedu.service;
+
+import java.util.List;
+
+import com.neuedu.bean.BbsComment;
+import com.neuedu.bean.BbsCommentEx;
+import com.neuedu.dao.CommentDaoImpl;
+import com.neuedu.dao.ICommentDao;
+
+public class CommentServiceImpl implements ICommentService{
+
+	@Override
+	public int addComment(BbsComment bc) {
+		// TODO Auto-generated method stub
+		ICommentDao icd = new CommentDaoImpl();
+		
+		return icd.addComment(bc);
+	}
+
+	@Override
+	public List<BbsCommentEx> getAllCommentsByTopicID(int id) {
+		// TODO Auto-generated method stub
+		ICommentDao icd = new CommentDaoImpl();
+		return icd.getAllCommentsByTopicID(id);
+	}
+
+}

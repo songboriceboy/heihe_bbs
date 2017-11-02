@@ -1,0 +1,7 @@
+package com.neuedu.dao;
+
+import com.neuedu.bean.BbsComment;
+
+public interface ICommentDao {
+	int addComment(BbsComment bc);
+}

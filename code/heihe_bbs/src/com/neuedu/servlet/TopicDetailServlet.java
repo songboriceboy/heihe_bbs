@@ -1,6 +1,7 @@
 package com.neuedu.servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,7 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.neuedu.bean.BbsCommentEx;
 import com.neuedu.bean.BbsTopicInfoEx;
+import com.neuedu.service.CommentServiceImpl;
+import com.neuedu.service.ICommentService;
 import com.neuedu.service.ITopicService;
 import com.neuedu.service.TopicServiceImpl;
 
@@ -37,8 +41,13 @@ public class TopicDetailServlet extends HttpServlet {
 		
 		ITopicService its = new TopicServiceImpl();
 		BbsTopicInfoEx btie = its.ViewTopicDetail(Integer.parseInt(id));
+		
+		//获得当前帖子的全部评论信息
 		//转发给帖子详情.jsp-- detail.jsp
+		ICommentService ics = new CommentServiceImpl();
+		List<BbsCommentEx> lst = ics.getAllCommentsByTopicID(Integer.parseInt(id));
 		request.setAttribute("topic", btie);
+		request.setAttribute("comments", lst);
 		request.getRequestDispatcher("/jsp/detail.jsp").forward(request, response);
 	}
 
