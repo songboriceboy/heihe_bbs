@@ -126,7 +126,7 @@
             <img src="../res/images/avatar/default.png" alt="">
           </a>
           <h2 class="fly-tip">
-            <a href="jie/detail.html">${topic.title}</a>
+            <a href="${pageContext.request.contextPath}/topic_detail.do?id=${topic.id}">${topic.title}</a>
           </h2>
           <p>
             <span><a href="user/home.html">${topic.nickname}</a></span>

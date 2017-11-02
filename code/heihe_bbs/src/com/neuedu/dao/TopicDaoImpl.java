@@ -58,7 +58,7 @@ public class TopicDaoImpl implements ITopicDao{
 		List<BbsTopicInfoEx> lst = new ArrayList<>();
 		try {
 			con =  DButil.getInstance().getConnection();
-			String strSql = "select tbt.title,tbt.createtime,tbt.view_count,tbu.nickname from tab_bbs_topicinfo as tbt join tab_bbs_userinfo as tbu on tbt.userid = tbu.id";
+			String strSql = "select tbt.id, tbt.title,tbt.createtime,tbt.view_count,tbu.nickname from tab_bbs_topicinfo as tbt join tab_bbs_userinfo as tbu on tbt.userid = tbu.id";
 			ps = (PreparedStatement) con.prepareStatement(strSql);
 		
 		
@@ -70,12 +70,14 @@ public class TopicDaoImpl implements ITopicDao{
 				String title = rs.getString("title");
 				Date date = rs.getDate("createtime");
 				int view_count = rs.getInt("view_count");
+				int id = rs.getInt("id");
 				
 				BbsTopicInfoEx btie = new BbsTopicInfoEx();
 				btie.setTitle(title);
 				btie.setNickname(nickname);
 				btie.setViewCount(view_count);
 				btie.setCreatetime(date);
+				btie.setId(id);
 				
 				lst.add(btie);
 				
@@ -89,6 +91,78 @@ public class TopicDaoImpl implements ITopicDao{
 		DButil.getInstance().close(ps);
 		DButil.getInstance().close(rs);
 		return lst;
+	}
+
+	@Override
+	public BbsTopicInfoEx getTopicByID(int id) {
+		// TODO Auto-generated method stub
+		Connection con =  null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		BbsTopicInfoEx btie = new BbsTopicInfoEx();
+		try {
+			con =  DButil.getInstance().getConnection();
+			String strSql = "select tbt.id, tbt.title, tbt.content,tbt.createtime,tbt.view_count,tbu.nickname from tab_bbs_topicinfo as tbt join tab_bbs_userinfo as tbu on tbt.userid = tbu.id where tbt.id = ?";
+			ps = (PreparedStatement) con.prepareStatement(strSql);
+			ps.setInt(1, id);
+		
+			
+			rs = ps.executeQuery();
+			while(rs.next())
+			{
+				String nickname = rs.getString("nickname");
+				String title = rs.getString("title");
+				String content = rs.getString("content");
+				Date date = rs.getDate("createtime");
+				int view_count = rs.getInt("view_count");
+				int tid = rs.getInt("id");
+				
+			
+				btie.setTitle(title);
+				btie.setNickname(nickname);
+				btie.setViewCount(view_count);
+				btie.setCreatetime(date);
+				btie.setId(tid);
+				btie.setContent(content);
+				
+			
+				
+			}
+		
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		DButil.getInstance().close(con);
+		DButil.getInstance().close(ps);
+		DButil.getInstance().close(rs);
+		return btie;
+	}
+
+	@Override
+	public int insertTopicViewCounts(int id) {
+		// TODO Auto-generated method stub
+		int ret = 0;
+		Connection con =  null;
+		PreparedStatement ps = null;
+		try {
+			con =  DButil.getInstance().getConnection();
+			String strSql = "update tab_bbs_topicinfo set view_count = view_count + 1 where id = ?";
+			ps = (PreparedStatement) con.prepareStatement(strSql);
+			ps.setInt(1, id);
+		
+
+
+			
+			ret = ps.executeUpdate();//³É¹¦·µ»Ø1
+		
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		DButil.getInstance().close(con);
+		DButil.getInstance().close(ps);
+		return ret;
 	}
 
 }

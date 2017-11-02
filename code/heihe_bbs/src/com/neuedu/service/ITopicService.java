@@ -8,4 +8,5 @@ import com.neuedu.bean.BbsTopicinfo;
 public interface ITopicService {
 	int addTopic(BbsTopicinfo bti);
 	List<BbsTopicInfoEx> getAllTopics();
+	BbsTopicInfoEx ViewTopicDetail(int id);
 }

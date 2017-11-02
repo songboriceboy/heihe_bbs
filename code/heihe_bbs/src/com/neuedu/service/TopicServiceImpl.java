@@ -23,4 +23,14 @@ public class TopicServiceImpl implements ITopicService {
 		return itd.getAllTopics();
 	}
 
+	@Override
+	public BbsTopicInfoEx ViewTopicDetail(int id) {
+		// TODO Auto-generated method stub
+		ITopicDao itd = new TopicDaoImpl();
+		
+		//增加帖子的阅读数
+		itd.insertTopicViewCounts(id);
+		return itd.getTopicByID(id);
+	}
+
 }

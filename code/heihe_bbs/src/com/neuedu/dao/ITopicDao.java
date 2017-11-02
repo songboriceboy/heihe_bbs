@@ -9,4 +9,7 @@ public interface ITopicDao {
 
 	int addTopic(BbsTopicinfo bti);
 	List<BbsTopicInfoEx> getAllTopics();
+	BbsTopicInfoEx getTopicByID(int id);
+	
+	int insertTopicViewCounts(int id);
 }
