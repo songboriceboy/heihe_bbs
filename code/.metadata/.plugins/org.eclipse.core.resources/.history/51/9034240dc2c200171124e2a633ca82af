@@ -1,0 +1,23 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>layPage快速使用</title>
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/res/layui/css/layui.css" media="all">
+</head>
+<body>
+ 
+<div id="test1"></div>
+ 
+<script src="${pageContext.request.contextPath}/res/layui/lay/dest/layui.all.js"></script>
+<script>
+
+var layer = layui.layer;
+
+layer.msg('Hello World');
+
+</script>
+</body>
+</html>

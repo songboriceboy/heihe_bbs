@@ -11,13 +11,23 @@
 <fullyQualifiedTypeName name="com.neuedu.service.UserServiceImpl"/>
 <fullyQualifiedTypeName name="com.neuedu.util.Md5Utils"/>
 <fullyQualifiedTypeName name="com.neuedu.util.DButil"/>
-<fullyQualifiedTypeName name="com.neuedu.service.ITopicService"/>
 <fullyQualifiedTypeName name="com.neuedu.dao.ITopicDao"/>
 <fullyQualifiedTypeName name="com.neuedu.dao.TopicDaoImpl"/>
-<fullyQualifiedTypeName name="com.neuedu.service.TopicServiceImpl"/>
+<fullyQualifiedTypeName name="org.junit.Test"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="com.neuedu.bean.BbsTopicinfo"/>
-<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="com.neuedu.service.TopicServiceImpl"/>
+<fullyQualifiedTypeName name="com.neuedu.service.ITopicService"/>
+<fullyQualifiedTypeName name="com.neuedu.bean.BbsTopicInfoEx"/>
 <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
 <fullyQualifiedTypeName name="com.neuedu.bean.BbsUserinfo"/>
-<fullyQualifiedTypeName name="org.junit.Test"/>
+<fullyQualifiedTypeName name="com.neuedu.dao.ICommentDao"/>
+<fullyQualifiedTypeName name="com.neuedu.dao.CommentDaoImpl"/>
+<fullyQualifiedTypeName name="java.sql.Date"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="com.neuedu.bean.BbsComment"/>
+<fullyQualifiedTypeName name="com.neuedu.service.ICommentService"/>
+<fullyQualifiedTypeName name="com.neuedu.service.CommentServiceImpl"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="com.neuedu.bean.BbsCommentEx"/>
 </qualifiedTypeNameHistroy>

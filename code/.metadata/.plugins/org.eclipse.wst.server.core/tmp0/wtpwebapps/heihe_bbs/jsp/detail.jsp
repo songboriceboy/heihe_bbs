@@ -92,7 +92,7 @@
             <!--<span class="layui-btn layui-btn-mini jie-admin  layui-btn-danger" type="collect" data-type="add">取消收藏</span>-->
           </div>
         </div>
-        
+        <input type="text">
         <div class="detail-body photos" style="margin-bottom: 20px;">
           ${topic.content}
         </div>

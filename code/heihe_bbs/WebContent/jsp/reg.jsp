@@ -12,6 +12,47 @@
   <meta name="description" content="Fly社区是模块化前端UI框架Layui的官网社区，致力于为web开发提供强劲动力">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/res/layui/css/layui.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/res/css/global.css">
+	<style>
+	.red{
+		color:red;
+	}
+	</style>
+	<script>
+		window.onload = function()
+		{
+			var email = document.getElementById('L_email');
+			var msg = document.getElementById('msg'); 
+			email.onblur = function()
+			{
+				//alert('leave')
+				//向服务器发起ajax请求，验证用户输入的用户名是否存在
+				
+				var request = new XMLHttpRequest();
+				
+				request.open("get","${pageContext.request.contextPath}/checkuser.do?email="+email.value,true);
+				
+				request.send();
+				
+				request.onreadystatechange = function()
+				{
+					if(request.readyState === 4)
+					{
+						if(request.status === 200)
+						{
+							if(request.responseText==0)
+							{
+								msg.innerHTML = "恭喜，可以注册";
+							}
+							else{
+								msg.innerHTML = "用户名已存在";
+							}
+						}
+					}
+				}
+				
+			}
+		}
+	</script>
 </head>
 <body>
 
@@ -62,6 +103,7 @@
                   <input type="text" id="L_email" name="email" required lay-verify="email" autocomplete="off" class="layui-input">
                 </div>
                 <div class="layui-form-mid layui-word-aux">将会成为您唯一的登入名</div>
+                 <div class="layui-form-mid layui-word-aux red" id="msg">${msg}</div>
               </div>
               <div class="layui-form-item">
                 <label for="L_username" class="layui-form-label">昵称</label>

@@ -159,17 +159,19 @@ layui.define(['laypage', 'fly', 'element'], function(exports){
       layui.upload({
         elem: '.upload-img input'
         ,method: 'post'
-        ,url: '/user/upload/'
+        ,url: '/heihe_bbs/upload.do'
         ,before: function(){
           avatarAdd.find('.loading').show();
         }
         ,success: function(res){
           if(res.status == 0){
-            $.post('/user/set/', {
-              avatar: res.url
-            }, function(res){
-              location.reload();
-            });
+        	  avatarAdd.find('img').attr('src',res.src);
+        	  
+//            $.post('/user/set/', {
+//              avatar: res.url
+//            }, function(res){
+//              location.reload();
+//            });
           } else {
             layer.msg(res.msg, {icon: 5});
           }

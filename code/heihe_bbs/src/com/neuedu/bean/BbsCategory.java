@@ -27,3 +27,4 @@ public class BbsCategory {
     this.nickname = nickname;
   }
 }
+

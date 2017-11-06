@@ -54,7 +54,12 @@ public class RegServlet extends HttpServlet {
 		bu.setNickname(strNickName);
 		bu.setPassword(Md5Utils.md5(strPwd));
 		
-		ius.addUser(bu);
+		int nRet = ius.addUser(bu);
+		if(nRet == 0)//当前用户已经存在
+		{
+			request.setAttribute("msg","email已存在");
+			request.getRequestDispatcher("/jsp/reg.jsp").forward(request, response);
+		}
 		
 		
 	}

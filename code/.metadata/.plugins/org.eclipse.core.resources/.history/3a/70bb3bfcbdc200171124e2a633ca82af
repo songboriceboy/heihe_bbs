@@ -1,0 +1,16 @@
+package com.neuedu.bean;
+
+public class Data {
+	
+
+	public String getSrc() {
+		return src;
+	}
+
+	public void setSrc(String src) {
+		this.src = src;
+	}
+
+
+	
+}

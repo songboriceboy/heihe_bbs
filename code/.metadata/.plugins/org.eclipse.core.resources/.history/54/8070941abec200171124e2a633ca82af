@@ -1,0 +1,111 @@
+package com.neuedu.servlet;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.PrintWriter;
+import java.util.List;
+import java.util.UUID;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
+
+import com.alibaba.fastjson.JSON;
+import com.neuedu.bean.Data;
+import com.neuedu.bean.UploadResJson;
+
+/**
+ * Servlet implementation class UploadServlet
+ */
+@WebServlet("/upload.do")
+public class UploadServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public UploadServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		 DiskFileItemFactory df = new DiskFileItemFactory();
+	        ServletFileUpload sfu = new ServletFileUpload(df);
+	        sfu.setHeaderEncoding("UTF-8");
+	        try {
+	            List<FileItem> lst = sfu.parseRequest(request);
+	            for(FileItem fi : lst)
+	            {
+	                if(fi.isFormField())
+	                {
+	                    System.out.println(fi.getFieldName() + ":" + fi.getString("UTF-8"));
+
+	                }
+	                else
+	                {
+	                    //c:\\file\\aa.txt
+	                    String strName = fi.getName().substring(fi.getName().lastIndexOf("\\")+1);
+	                    System.out.println(strName);
+
+	                    String strPath = this.getServletContext().getRealPath("") + "/upload/";
+	                    System.out.println(strPath);
+	                    File file = new File(strPath);
+
+	                    if(!file.exists())
+	                    {
+	                        file.mkdir();
+	                    }
+	                    InputStream is = fi.getInputStream();
+	                    System.out.println(strPath+strName);
+	                    String strUUid = UUID.randomUUID().toString();
+	                    FileOutputStream os = new  FileOutputStream(strPath+strUUid+"_"+strName);
+	                    byte[] buffer = new byte[1024];
+	                    int len = 0;
+	                    while((len = is.read(buffer)) > 0)
+	                    {
+	                        os.write(buffer, 0, len);
+	                    }
+
+	                    os.close();
+	                    is.close();
+	                    
+	                    UploadResJson urj = new UploadResJson();
+	                    urj.setStatus(0);
+	                    urj.setMsg("");
+	                    Data data = new Data();
+	                    data.setSrc(request.getContextPath() + "/upload/"+strUUid+"_"+strName);
+	                    urj.setData(data);
+	                    
+	                    PrintWriter pw = response.getWriter();
+	            		pw.print(JSON.toJSONString(urj));
+	                }
+	            }
+	        } catch (FileUploadException e) {
+	            // TODO Auto-generated catch block
+	            e.printStackTrace();
+	        }
+
+	}
+
+}

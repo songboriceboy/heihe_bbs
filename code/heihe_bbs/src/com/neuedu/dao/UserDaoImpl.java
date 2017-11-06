@@ -74,4 +74,36 @@ public class UserDaoImpl implements IUserDao{
 		return bui;
 	}
 
+	@Override
+	public boolean IsUserExist(String email) {
+		// TODO Auto-generated method stub
+		Connection con =  null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+	
+		
+		boolean bRet = false;
+		try {
+			con =  DButil.getInstance().getConnection();
+			String strSql = "select * from tab_bbs_userinfo "
+					+ "where email = ?";
+			ps = (PreparedStatement) con.prepareStatement(strSql);
+			ps.setString(1, email);
+		
+		
+			
+			rs = ps.executeQuery();
+			bRet = rs.next();
+
+		
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		DButil.getInstance().close(con);
+		DButil.getInstance().close(ps);
+		DButil.getInstance().close(rs);
+		return bRet;
+	}
+
 }
