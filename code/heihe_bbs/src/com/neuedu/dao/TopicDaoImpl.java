@@ -58,7 +58,7 @@ public class TopicDaoImpl implements ITopicDao{
 		List<BbsTopicInfoEx> lst = new ArrayList<>();
 		try {
 			con =  DButil.getInstance().getConnection();
-			String strSql = "select tbt.id, tbt.title,tbt.createtime,tbt.view_count,tbu.nickname from tab_bbs_topicinfo as tbt join tab_bbs_userinfo as tbu on tbt.userid = tbu.id";
+			String strSql = "select tbt.id, tbt.title,tbt.createtime,tbt.view_count,tbu.nickname,tbu.head_url from tab_bbs_topicinfo as tbt join tab_bbs_userinfo as tbu on tbt.userid = tbu.id";
 			ps = (PreparedStatement) con.prepareStatement(strSql);
 		
 		
@@ -78,6 +78,7 @@ public class TopicDaoImpl implements ITopicDao{
 				btie.setViewCount(view_count);
 				btie.setCreatetime(date);
 				btie.setId(id);
+				btie.setHead_url(rs.getString("head_url"));
 				
 				lst.add(btie);
 				

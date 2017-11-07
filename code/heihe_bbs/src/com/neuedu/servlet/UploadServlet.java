@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
@@ -20,8 +21,10 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import com.alibaba.fastjson.JSON;
-
+import com.neuedu.bean.BbsUserinfo;
 import com.neuedu.bean.UploadResJson;
+import com.neuedu.service.IUserService;
+import com.neuedu.service.UserServiceImpl;
 
 /**
  * Servlet implementation class UploadServlet
@@ -65,7 +68,7 @@ public class UploadServlet extends HttpServlet {
 	                else
 	                {
 	                    //c:\\file\\aa.txt
-	                    String strName = fi.getName().substring(fi.getName().lastIndexOf("\\")+1);
+	                    String strName = fi.getName();
 	                    System.out.println(strName);
 
 	                    String strPath = this.getServletContext().getRealPath("") + "/upload/";
@@ -96,6 +99,14 @@ public class UploadServlet extends HttpServlet {
 	                    urj.setSrc(request.getContextPath() + "/upload/"+strUUid+"_"+strName);
 	              
 	             
+	                    //将图片路径保存到数据库中
+	                    HttpSession httpSession = request.getSession();
+	                    BbsUserinfo bui = (BbsUserinfo)httpSession.getAttribute("userinfo");
+	                    
+	                    
+	                    IUserService iUserService = new UserServiceImpl();
+	                    iUserService.SaveUserHeaderPicPath(strUUid+"_"+strName, bui.getId());
+	                    
 	                    
 	                    PrintWriter pw = response.getWriter();
 	            		pw.print(JSON.toJSONString(urj));

@@ -123,7 +123,7 @@
       
       <li class="fly-list-li">
           <a href="user/home.html" class="fly-list-avatar">
-            <img src="../res/images/avatar/default.png" alt="">
+            <img src="${pageContext.request.contextPath}/upload/${topic.head_url}" alt="">
           </a>
           <h2 class="fly-tip">
             <a href="${pageContext.request.contextPath}/topic_detail.do?id=${topic.id}">${topic.title}</a>

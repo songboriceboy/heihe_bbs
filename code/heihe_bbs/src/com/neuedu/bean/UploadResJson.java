@@ -1,15 +1,10 @@
 package com.neuedu.bean;
 
 public class UploadResJson {
-	private int status;
-	public int getStatus() {
-		return status;
-	}
-	public void setStatus(int status) {
-		this.status = status;
-	}
-	private String msg;
-	private String src;
+	private int status;//上传成功与否的状态
+	
+	private String msg;//错误提示
+	private String src;//路径名，图片地址
 	
 	public String getMsg() {
 		return msg;
@@ -24,5 +19,10 @@ public class UploadResJson {
 		this.src = src;
 	}
 	
-	
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
+	}
 }

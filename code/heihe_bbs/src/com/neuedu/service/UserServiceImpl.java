@@ -36,4 +36,11 @@ public class UserServiceImpl implements IUserService{
 		return iud.IsUserExist(email);
 	}
 
+	@Override
+	public int SaveUserHeaderPicPath(String path,int id) {
+		// TODO Auto-generated method stub
+		IUserDao iud = new UserDaoImpl();
+		return iud.SaveUserHeaderPicPath(path,id);
+	}
+
 }

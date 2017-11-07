@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.neuedu.bean.BbsUserinfo;
 import com.neuedu.service.IUserService;
@@ -59,6 +60,13 @@ public class RegServlet extends HttpServlet {
 		{
 			request.setAttribute("msg","email“—¥Ê‘⁄");
 			request.getRequestDispatcher("/jsp/reg.jsp").forward(request, response);
+		}
+		else
+		{
+			BbsUserinfo bui = ius.userLogin(strEmail, Md5Utils.md5(strPwd));
+			HttpSession httpSession = request.getSession();
+			httpSession.setAttribute("userinfo", bui);
+			response.sendRedirect(request.getContextPath()+"/jsp/user_setting.jsp");
 		}
 		
 		

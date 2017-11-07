@@ -7,4 +7,6 @@ public interface IUserService {
 	BbsUserinfo userLogin(String email, String pass);//返回值大于0，登录成功
 	
 	boolean IsUserExist(String email);
+	
+	int SaveUserHeaderPicPath(String path,int id);
 }

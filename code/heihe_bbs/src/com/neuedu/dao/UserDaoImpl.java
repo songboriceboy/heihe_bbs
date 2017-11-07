@@ -106,4 +106,29 @@ public class UserDaoImpl implements IUserDao{
 		return bRet;
 	}
 
+	@Override
+	public int SaveUserHeaderPicPath(String path,int id) {
+		// TODO Auto-generated method stub
+		int ret = 0;
+		Connection con =  null;
+		PreparedStatement ps = null;
+		try {
+			con =  DButil.getInstance().getConnection();
+			String strSql = "update tab_bbs_userinfo set head_url = ? where id = ?";
+			ps = (PreparedStatement) con.prepareStatement(strSql);
+			ps.setString(1, path);
+			ps.setInt(2, id);
+
+			
+			ret = ps.executeUpdate();//³É¹¦·µ»Ø1
+		
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		DButil.getInstance().close(con);
+		DButil.getInstance().close(ps);
+		return ret;
+	}
+
 }
