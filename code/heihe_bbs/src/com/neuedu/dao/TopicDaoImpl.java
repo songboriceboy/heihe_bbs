@@ -166,4 +166,82 @@ public class TopicDaoImpl implements ITopicDao{
 		return ret;
 	}
 
+	@Override
+	public List<BbsTopicInfoEx> getPagedTopics(int pageSize, int pageIndex) {
+		// TODO Auto-generated method stub
+		Connection con =  null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<BbsTopicInfoEx> lst = new ArrayList<>();
+		try {
+			con =  DButil.getInstance().getConnection();
+			String strSql = "select tbt.id, tbt.title,tbt.createtime,tbt.view_count,tbu.nickname,tbu.head_url from tab_bbs_topicinfo as tbt join tab_bbs_userinfo as tbu on tbt.userid = tbu.id limit ?,?";
+			ps = (PreparedStatement) con.prepareStatement(strSql);
+			ps.setInt(1, pageSize*(pageIndex-1));
+			ps.setInt(2, pageSize);
+			
+			rs = ps.executeQuery();
+			while(rs.next())
+			{
+				String nickname = rs.getString("nickname");
+				String title = rs.getString("title");
+				Date date = rs.getDate("createtime");
+				int view_count = rs.getInt("view_count");
+				int id = rs.getInt("id");
+				
+				BbsTopicInfoEx btie = new BbsTopicInfoEx();
+				btie.setTitle(title);
+				btie.setNickname(nickname);
+				btie.setViewCount(view_count);
+				btie.setCreatetime(date);
+				btie.setId(id);
+				btie.setHead_url(rs.getString("head_url"));
+				
+				lst.add(btie);
+				
+			}
+		
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		DButil.getInstance().close(con);
+		DButil.getInstance().close(ps);
+		DButil.getInstance().close(rs);
+		return lst;
+	}
+
+	@Override
+	public int getTotalCount() {
+		// TODO Auto-generated method stub
+		Connection con =  null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+	
+		int nCount = 0;
+		
+		try {
+			con =  DButil.getInstance().getConnection();
+			String strSql = "select count(*) as totalnum from tab_bbs_topicinfo as tbt join tab_bbs_userinfo as tbu on tbt.userid = tbu.id";
+			ps = (PreparedStatement) con.prepareStatement(strSql);
+		
+		
+			
+			rs = ps.executeQuery();
+			if(rs.next())
+			{
+				nCount = rs.getInt("totalnum");
+				
+			}
+		
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		DButil.getInstance().close(con);
+		DButil.getInstance().close(ps);
+		DButil.getInstance().close(rs);
+		return nCount;
+	}
+
 }

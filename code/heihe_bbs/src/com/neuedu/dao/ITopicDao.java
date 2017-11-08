@@ -12,4 +12,6 @@ public interface ITopicDao {
 	BbsTopicInfoEx getTopicByID(int id);
 	
 	int insertTopicViewCounts(int id);
+	int getTotalCount();
+	List<BbsTopicInfoEx> getPagedTopics(int pageSize, int pageIndex);
 }

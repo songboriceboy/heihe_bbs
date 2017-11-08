@@ -9,4 +9,8 @@ public interface ITopicService {
 	int addTopic(BbsTopicinfo bti);
 	List<BbsTopicInfoEx> getAllTopics();
 	BbsTopicInfoEx ViewTopicDetail(int id);
+	
+	
+	int getTotalCount();
+	List<BbsTopicInfoEx> getPagedTopics(int pageSize, int pageIndex);
 }

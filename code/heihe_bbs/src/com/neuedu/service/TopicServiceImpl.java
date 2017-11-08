@@ -33,4 +33,18 @@ public class TopicServiceImpl implements ITopicService {
 		return itd.getTopicByID(id);
 	}
 
+	@Override
+	public List<BbsTopicInfoEx> getPagedTopics(int pageSize, int pageIndex) {
+		// TODO Auto-generated method stub
+		ITopicDao itd = new TopicDaoImpl();
+		return itd.getPagedTopics(pageSize, pageIndex);
+	}
+
+	@Override
+	public int getTotalCount() {
+		// TODO Auto-generated method stub
+		ITopicDao itd = new TopicDaoImpl();
+		return itd.getTotalCount();
+	}
+
 }

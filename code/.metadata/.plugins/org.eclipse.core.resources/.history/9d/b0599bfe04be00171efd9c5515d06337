@@ -1,4 +1,0 @@
-driver=com.mysql.jdbc.Driver
-url=jdbc:mysql///heihe_bbs
-username=root
-password=root
